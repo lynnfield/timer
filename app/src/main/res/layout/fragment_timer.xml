@@ -1,0 +1,44 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        tools:context="com.lynnfield.timer.TimerFragment">
+
+        <include
+            android:id="@+id/minutes"
+            layout="@layout/num"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textSize="@dimen/timer_text_size"
+            tools:ignore="HardcodedText"/>
+
+        <include
+            android:id="@+id/seconds_first"
+            layout="@layout/num"/>
+
+        <include
+            android:id="@+id/seconds_last"
+            layout="@layout/num"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/block_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"/>
+</FrameLayout>
