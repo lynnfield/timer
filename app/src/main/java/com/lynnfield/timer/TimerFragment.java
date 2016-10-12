@@ -9,10 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class TimerFragment extends Fragment {
     private static final int MINUTES_MAX = 10;
     private static final int FIRST_SECOND_MAX = 6;
@@ -34,12 +30,6 @@ public class TimerFragment extends Fragment {
     private Direction direction = DEFAULT_DIRECTION;
     private int seconds = DEFAULT_SECONDS;
     private boolean isRunning;
-    private final Runnable reset = new Runnable() {
-        @Override
-        public void run() {
-            reset();
-        }
-    };
     private Listener listener;
     private final Runnable tick = new Runnable() {
         @Override
@@ -70,6 +60,12 @@ public class TimerFragment extends Fragment {
             }
 
             tick();
+        }
+    };
+    private final Runnable reset = new Runnable() {
+        @Override
+        public void run() {
+            reset();
         }
     };
 
@@ -142,6 +138,9 @@ public class TimerFragment extends Fragment {
     }
 
     public void start() {
+        if (isRunning)
+            return;
+
         enableBlock();
         resetMinutes();
         resetFirstSeconds();
@@ -269,12 +268,4 @@ public class TimerFragment extends Fragment {
             }
         }
     }
-
-    /*
-    * Сделать небольшой UI Control таймер обратного отсчета (от 9 минут:59 секунд и до 0:00).
-    * Особенности: цифры должны меняться как будто это барабан (примерно такого плана, как на картинке выше).
-    * Примечание: эмуляции настоящего 3d не нужно (чтобы на цифрах вверху, внизу были 3ех мерные искажения), достаточно похожести.
-    * Другими словами, кроме выставления таймера и направления отсчета ничего не нужно, только центральная строка, просто анимация барабана.
-    * Дополнительно (счетчик может иметь как обратный отсчет так и прямой, барабан соответственно должен уметь вращаться в обе стороны).
-    * */
 }
